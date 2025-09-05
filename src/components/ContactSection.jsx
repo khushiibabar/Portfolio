@@ -129,20 +129,19 @@
 //             techniques. Focused on clean code, and pixel-perfect design that
 //             stand out.
 //           </p>
-//           <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
+
+//              <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
 //             Contact Me
 //           </button>
-        
+
 //         </div>
 
-  
 //       </div>
 //     </section>
 //   );
 // };
 
 // export default ContactSection;
-
 
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
@@ -156,10 +155,10 @@ const ContactSection = () => {
   const finalTextRef = useRef(null);
 
   useEffect(() => {
-    // Register Gsap plugins
+    //Register Gsap plugins
     gsap.registerPlugin(ScrollTrigger);
 
-    // Cleanup function for ScrollTrigger
+    //<ake sure all Scrolltigger instances are properly killed
     const cleanup = () => {
       ScrollTrigger.getAll().forEach((st) => {
         if (st.vars.trigger === sectionRef.current) {
@@ -168,14 +167,15 @@ const ContactSection = () => {
       });
     };
 
+    //cleanup any exixting Scrolltigger
     cleanup();
 
-    // Initial states
+    //set initial states
     gsap.set(circleRef.current, { scale: 1, backgroundColor: "white" });
     gsap.set(initialTextRef.current, { opacity: 1 });
     gsap.set(finalTextRef.current, { opacity: 0 });
 
-    // Timeline
+    //Create the main timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -190,7 +190,7 @@ const ContactSection = () => {
       },
     });
 
-    // Animations
+    //initial state to mid-zoom (0-50%)
     tl.to(
       circleRef.current,
       {
@@ -202,6 +202,7 @@ const ContactSection = () => {
       0
     );
 
+    //Fade out initial text during first half
     tl.to(
       initialTextRef.current,
       {
@@ -212,6 +213,7 @@ const ContactSection = () => {
       0.1
     );
 
+    //Mid zoom to final state (50%-100%)
     tl.to(
       circleRef.current,
       {
@@ -224,6 +226,7 @@ const ContactSection = () => {
       0.5
     );
 
+    //Fade in final text during second half
     tl.to(
       finalTextRef.current,
       {
@@ -234,6 +237,7 @@ const ContactSection = () => {
       0.7
     );
 
+    //return cleanup function
     return cleanup;
   }, []);
 
@@ -243,12 +247,12 @@ const ContactSection = () => {
       className="relative flex items-center justify-center bg-black"
       style={{ overscrollBehavior: "none" }}
     >
-      {/* Circle */}
+      {/* Simple circle with minimal nesting */}
       <div
         ref={circleRef}
         className="relative flex items-center justify-center w-24 h-24 transition-shadow duration-1000 rounded-full shadow-lg sm:w-28 md:w-32 sm:h-28 md:h-32 shadow-violet-300/50 bg-gradient-to-r from-violet-400 to-pink-100"
       >
-        {/* Initial text */}
+        {/* initial text */}
         <p
           ref={initialTextRef}
           className="absolute inset-0 flex items-center text-base font-bold text-center text-black sm:text-lg md:text-xl"
@@ -256,7 +260,7 @@ const ContactSection = () => {
           SCROLL DOWN
         </p>
 
-        {/* Final text */}
+        {/* final text */}
         <div
           ref={finalTextRef}
           className="relative flex flex-col items-center justify-center text-center opacity"
@@ -271,16 +275,17 @@ const ContactSection = () => {
             stand out.
           </p>
 
-          {/* WhatsApp Contact Button */}
-          <a
-            href="https://wa.me/919876543210?text=Hi%20Khushi,%20I%20saw%20your%20portfolio%20and%20want%20to%20connect!"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              const heroSection = document.getElementById("hero");
+              if (heroSection) {
+                heroSection.scrollIntoView({ behavior: "smooth" }); // 👈 smooth scroll
+              }
+            }}
+            className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1"
           >
-            <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
-              Contact Me
-            </button>
-          </a>
+            Contact Me
+          </button>
         </div>
       </div>
     </section>
