@@ -129,9 +129,14 @@ const ContactSection = () => {
             techniques. Focused on clean code, and pixel-perfect design that
             stand out.
           </p>
-          <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
+          {/* <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
             Contact Me
-          </button>
+          </button> */}
+          <a href="tel:+919876543210">
+            <button className="px-10 py-2 transition-all duration-500 bg-black rounded-xl hover:bg-white hover:text-black scale-[0.1] absolute sm:mt-9 mt-7 text-nowrap mb-1">
+              Contact Me
+            </button>
+          </a>
         </div>
       </div>
     </section>
