@@ -269,7 +269,7 @@ const ProjectsSection = () => {
       id: 2,
       title: "Startup Website",
       imageSrc: "/images/Screenshot 2025-09-04 184054.png",
-      link: "https://hamelockindia.netlify.app/",
+      link: "https://hamelockindia.com/",
     },
     {
       id: 3,
