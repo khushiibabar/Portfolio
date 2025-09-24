@@ -277,6 +277,12 @@ const ProjectsSection = () => {
       imageSrc: "/images/Screenshot 2025-09-04 191411 (1).png",
       link: "https://majorproject2-tr7q.onrender.com/listings",
     },
+    {
+      id: 4,
+      title: "Foodie's hub",
+      imageSrc: "/images/Screenshot 2025-09-24 163621.png",
+      link: "https://restaurant-web-orpin-theta.vercel.app/",
+    },
   ];
 
   useEffect(() => {
