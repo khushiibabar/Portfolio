@@ -263,7 +263,7 @@ const ProjectsSection = () => {
       id: 1,
       title: "Portfolio Website",
       imageSrc: "/images/Screenshot 2025-09-04 183909.png",
-      link: "https://khushiibabarportfolio.netlify.app/",
+      link: "https://portfolio-rust-chi-26.vercel.app/",
     },
     {
       id: 2,
